@@ -96,10 +96,11 @@
             transition: transform 0.2s, box-shadow 0.2s;
             width: 100%;
             margin-bottom: 20px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .download-btn:hover {
@@ -176,10 +177,10 @@
             </div>
         </div>
 
-        <button class="download-btn" onclick="downloadAPK()">
+        <a href="https://github.com/becrp6082004-boop/becryp-download/releases/download/v7.0.0/Becryp.apk" class="download-btn">
             <span>⬇️</span>
             <span>Download APK</span>
-        </button>
+        </a>
 
         <div class="qr-section">
             <div class="qr-label">Share via QR Code</div>
@@ -201,16 +202,6 @@
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
-
-        // Download function
-        function downloadAPK() {
-            const link = document.createElement('a');
-            link.href = 'Becryp.apk';
-            link.download = 'Becryp-7.0.0.apk';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
     </script>
 </body>
 </html>
