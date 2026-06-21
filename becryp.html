@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Becryp - Download APK</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <meta name="description" content="Becryp - Secure encryption app for your data and communications">
+    <meta name="theme-color" content="#F5D4B0">
+    <title>Becryp - Secure Encryption App</title>
     <style>
         * {
             margin: 0;
@@ -12,195 +13,534 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+        :root {
+            --primary-bg: #F5D4B0;
+            --dark-text: #1a1a1a;
+            --light-text: #666;
+            --accent: #2c3e50;
+            --border: #e0cfc3;
+            --white: #ffffff;
         }
 
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 50px 40px;
-            max-width: 500px;
-            width: 100%;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Header / Navigation */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #fae8d6 100%);
+            padding: 4rem 1rem;
             text-align: center;
         }
 
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: var(--white);
+            border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
         }
 
         h1 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--dark-text);
         }
 
-        .version {
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 30px;
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .app-details {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .detail-item {
-            flex: 1;
-        }
-
-        .detail-label {
-            font-size: 12px;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .detail-value {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-            margin-bottom: 20px;
+        .cta-button {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 0.8rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
         }
 
-        .download-btn:hover {
+        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3);
+            background: #1f2937;
         }
 
-        .download-btn:active {
+        .cta-button:active {
             transform: translateY(0);
         }
 
-        .qr-section {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
+        .download-icon {
+            font-size: 1.3rem;
         }
 
-        .qr-label {
-            font-size: 12px;
-            color: #999;
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark-text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-bg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* App Info Section */
+        .app-info {
+            background: var(--primary-bg);
+            padding: 3rem 1rem;
+            margin: 3rem 0;
+        }
+
+        .app-info-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .info-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .badge-label {
+            font-size: 0.85rem;
+            color: var(--light-text);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 15px;
+            margin-top: 0.5rem;
         }
 
-        #qrcode {
+        /* Requirements Section */
+        .requirements {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .requirements h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .requirement-item {
             display: inline-block;
-            padding: 10px;
-            background: white;
-            border-radius: 10px;
+            background: var(--primary-bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            margin: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--dark-text);
         }
 
-        .footer {
-            font-size: 12px;
-            color: #999;
-            margin-top: 20px;
+        /* Footer */
+        footer {
+            background: var(--accent);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 1rem 0;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-badges {
+                gap: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 30px 20px;
-            }
-
             h1 {
-                font-size: 24px;
+                font-size: 1.8rem;
             }
 
-            .app-details {
-                flex-direction: column;
-                gap: 15px;
+            .logo-container {
+                width: 100px;
+                height: 100px;
             }
+
+            .logo-container img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .features {
+                margin: 2rem auto;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Focus states for keyboard navigation */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="app-icon">🔐</div>
-        
-        <h1>Becryp</h1>
-        <div class="version">Version 7.0.0</div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-text">
+                🔐 Becryp
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#info">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="app-details">
-            <div class="detail-item">
-                <div class="detail-label">File Size</div>
-                <div class="detail-value">88 MB</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="becryp_12.png" alt="Becryp Logo" width="100" height="100">
             </div>
-            <div class="detail-item">
-                <div class="detail-label">Format</div>
-                <div class="detail-value">APK</div>
+            <h1>Secure Your Data with Becryp</h1>
+            <p class="tagline">Military-grade encryption for your privacy. Fast, secure, and easy to use.</p>
+            <a href="#download" class="cta-button">
+                <span class="download-icon">⬇️</span>
+                Download Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose Becryp?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Military-Grade Encryption</h3>
+                <p>End-to-end encryption ensures your data stays private and secure from everyone except intended recipients.</p>
             </div>
-            <div class="detail-item">
-                <div class="detail-label">Version</div>
-                <div class="detail-value">7.0.0</div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast & Lightweight</h3>
+                <p>Quick installation, minimal storage, and smooth performance on all devices without draining your battery.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Privacy First</h3>
+                <p>No tracking, no data collection. Your privacy is our priority. Complete control in your hands.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Works Everywhere</h3>
+                <p>Available on all devices. Sync seamlessly across your Android, iOS, and web platforms.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Easy Sharing</h3>
+                <p>Share encrypted files and messages instantly with anyone. Simple, secure, and straightforward.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Trust & Security</h3>
+                <p>Tested by security experts. Open-source audited code. Your data is always protected.</p>
             </div>
         </div>
+    </section>
 
-        <a href="https://github.com/becrp6082004-boop/becryp-download/releases/download/v7.0.0/Becryp.apk" class="download-btn">
-            <span>⬇️</span>
-            <span>Download APK</span>
-        </a>
-
-        <div class="qr-section">
-            <div class="qr-label">Share via QR Code</div>
-            <div id="qrcode"></div>
+    <!-- App Info Section -->
+    <section class="app-info" id="info">
+        <div class="app-info-content">
+            <h2>Becryp by Numbers</h2>
+            <div class="info-badges">
+                <div class="badge">
+                    <div class="badge-number">7.0.0</div>
+                    <div class="badge-label">Version</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-number">88</div>
+                    <div class="badge-label">MB Size</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-number">256-bit</div>
+                    <div class="badge-label">Encryption</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-number">∞</div>
+                    <div class="badge-label">Support</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>Easy to install • Safe to download</p>
+    <!-- Requirements Section -->
+    <section class="requirements">
+        <h3>System Requirements</h3>
+        <div>
+            <div class="requirement-item">Android 5.0+</div>
+            <div class="requirement-item">88 MB Storage</div>
+            <div class="requirement-item">Internet Connection</div>
+            <div class="requirement-item">No Permissions Needed</div>
         </div>
-    </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="app-info" id="download">
+        <div class="app-info-content">
+            <h2>Ready to Secure Your Data?</h2>
+            <p style="font-size: 1.1rem; margin: 1.5rem 0; color: var(--dark-text);">
+                Download Becryp now and take control of your privacy.
+            </p>
+            <a href="https://github.com/becrp6082004-boop/becryp-download/releases/download/v7.0.0/Becryp.apk" class="cta-button">
+                <span class="download-icon">⬇️</span>
+                Download APK (88 MB)
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+                <a href="#support">Support</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-text">
+                &copy; 2026 Becryp. All rights reserved. Secure by default.
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // Initialize QR code
-        new QRCode(document.getElementById("qrcode"), {
-            text: window.location.href,
-            width: 200,
-            height: 200,
-            colorDark: "#667eea",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Track download button clicks
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function () {
+                console.log('Download initiated');
+            });
         });
     </script>
 </body>
